@@ -27,7 +27,7 @@ public class KP24 {
 				// SimpleDateFormat 을 HH 형식으로 받아와서 AM PM을 나눌경우
 				// 출력은 그대로 HH 형식으로 나오는 문제발생
 				// 비교연산은 HH 형식으로 하되, 출력은 hh 형식으로 출력 하여 문제 해결
-				SimpleDateFormat sdfYtoD = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat sdfYtoD = new SimpleDateFormat("yyyy-MM-dd E");
 				SimpleDateFormat sdfHtoS = new SimpleDateFormat("HH:mm:ss");
 				if(choice.equals("2")) {	// AM/PM을 선택했을 경우
 					// AM : 00 <= num <=11 // PM = 12 <= num <= 23
