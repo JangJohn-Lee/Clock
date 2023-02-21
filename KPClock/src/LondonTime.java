@@ -8,11 +8,11 @@ import java.util.TimeZone;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-public class CanberraTime extends JFrame{
+public class LondonTime extends JFrame{
    private JLabel first = new JLabel();
    private JLabel second = new JLabel();
 
-   public CanberraTime() {
+   public LondonTime() {
       // TODO 자동 생성된 생성자 스텁
       set();
       setlabel();
@@ -23,7 +23,7 @@ public class CanberraTime extends JFrame{
       while(true) {//무조건 실행
           TimeZone time;
           Date date = new Date();
-          time = TimeZone.getTimeZone("Australia/Canberra");
+          time = TimeZone.getTimeZone("Europe/London");
           DateFormat one = new SimpleDateFormat("yyyy . MM . dd E", Locale.ENGLISH);
           DateFormat two = new SimpleDateFormat("HH : mm : ss", Locale.ENGLISH);
           one.setTimeZone(time);
@@ -55,7 +55,7 @@ public class CanberraTime extends JFrame{
       
    }
    public void set() {
-      setTitle("Y_Clock CanberraTime"); // 타이틀
+      setTitle("Y_Clock LondonTime"); // 타이틀
       setSize(1280, 720); // 메인에서 가로 세로 크기 가져옴
       setLocationRelativeTo(null);// 화면 가운데서 창이 나옴
       setResizable(false);//정해진사이즈에서 변경불가
@@ -65,6 +65,6 @@ public class CanberraTime extends JFrame{
       
    }
    public static void main(String[] args) { 
-      new CanberraTime();
+      new LondonTime();
    }
 }

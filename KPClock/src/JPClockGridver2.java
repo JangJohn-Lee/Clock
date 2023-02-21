@@ -12,9 +12,7 @@ public class JPClockGridver2 {
 		Date date = new Date();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd\nHH:mm:ss (z Z)");
 		int num = Integer.parseInt(df.format(date).toString().substring(11,13));
-//		if(num >= 18 && num<= 6) {	// 오후 6시~ 오전 6시까지 배경이미지 변환
-//			
-//		}
+
 		time = TimeZone.getTimeZone("Asia/Seoul");
 		df.setTimeZone(time);
 		System.out.format("%s%n%s%n%n", time.getDisplayName(),
