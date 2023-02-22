@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 public class JGAlarmSet extends JFrame implements ActionListener {
 	
-//	private JLabel yearN, monthN, dayN, hourN, minuteN;
+	JLabel yearN, monthN, dayN, hourN, minuteN;
 	JButton button;
 	JTextField year;
 	JTextField month;
@@ -90,7 +90,7 @@ public class JGAlarmSet extends JFrame implements ActionListener {
 		}
 	}
 	
-	public static void JGAlarmSet(String[] args) {
+	public static void main(String[] args) {
 
 		JGAlarmSet alarm = new JGAlarmSet();
 		
