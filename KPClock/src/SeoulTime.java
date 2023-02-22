@@ -1,14 +1,17 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 public class SeoulTime extends JFrame{
    private JLabel first = new JLabel();
    private JLabel second = new JLabel();
@@ -29,11 +32,19 @@ public class SeoulTime extends JFrame{
           DateFormat two = new SimpleDateFormat("HH : mm : ss", Locale.ENGLISH);
           one.setTimeZone(time);
           two.setTimeZone(time);
-         
+
+          	// 오후 6~ 오전 6시 까지 background 밤으로 변경
+//          int hour = Integer.parseInt(two.format(date).toString().substring(0,2));
+//          if(hour >= 18 && hour<=6) {
+//        	  
+//          } else{					// 오전 6~ 오후 6시까지 낮 background 변경
+//          
+//          }
          first.setText(one.format(date));//first의 내용을 one(string)으로 설정한다
          second.setText(two.format(date));//second의 내용을 two(string)으로 설정한다.
          add(first);//first를 프레임에 추가한다.
          add(second);//second를 프레임에 추가한다.
+         
          try { //트라이 
             Thread.sleep(1000);//1초
             repaint();
@@ -53,8 +64,8 @@ public class SeoulTime extends JFrame{
       second.setBackground(new Color(0,0,0,0));//백그라운드를 0,0,0,0으로 설정한다.
       second.setBounds(440,320,1000,50);//위치와 크기를 설정한다.
       second.setForeground(Color.black);   
-      
    }
+   
    public void set() {
       setTitle("Y_Clock SeoulTime"); // 타이틀
       setSize(1280, 720); // 메인에서 가로 세로 크기 가져옴
@@ -63,8 +74,8 @@ public class SeoulTime extends JFrame{
       setLayout(null);//레이아웃 설정가능
       setVisible(true); // 보이게
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 안정적으로 jframe이 종료되게 해줌
-      
    }
+      
    public static void main(String[] args) { 
       new SeoulTime();
    }
