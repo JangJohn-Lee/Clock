@@ -1,3 +1,6 @@
+package JAEGUTIMES_Final_ver;
+
+//import java.awt.event.MouseMotionAdapter;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DateFormat;
@@ -7,57 +10,41 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-//import java.awt.event.MouseMotionAdapter;
-import java.awt.Graphics;
 
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
-import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import javax.swing.JLabel;
 import javax.swing.*;
 
-public class JAGUTIMES_Final_bata extends JFrame {
+public class JAGUTIMES_Final extends JFrame {
 
    static JGAlarmSet alarmSet;
 
-   private JPanel menuBoxPane, closeBoxPane, darkModePane, darkModeBoxPane, alarmPane, themePane, fontSizePane,
-         timeDisplayPane, timesPane, timePane, btnBgPane;
+   private JPanel menuBoxPane, closeBoxPane, userNamePane, passwordPane, darkModePane, darkModeBoxPane, alarmPane, alarmSetPane,themePane, fontSizePane,
+         timeDisplayPane, timesPane, timePane, btnBgPane, submitPane, submitConfirmPane;
    
    private JFrame controlPane;
 
-   private JButton btnTZ1, btnTZ2, btnTZ3, btnTZ4, btnTZ5; // ì‹œê°„ ì„¤ì • ë²„íŠ¼
+   private JButton btnTZ1, btnTZ2, btnTZ3, btnTZ4, btnTZ5; // ½Ã°£ ¼³Á¤ ¹öÆ°
 
-   private JButton btnBg1, btnBg2, btnBg3, btnBg4, btnBg5; // ë°°ê²½ ì„¤ì • ë²„íŠ¼
-   private JButton btnFS1, btnFS2, btnFS3; // í°íŠ¸ ì‚¬ì´ì¦ˆ ì„¤ì • ë²„íŠ¼
-   private JButton btnTS1, btnTS2, btnTS3; // í…Œë§ˆ ì„¤ì • ë²„íŠ¼
-   private JButton btnAS1, btnAS2; // ì•ŒëŒ ì„¤ì • ë²„íŠ¼
+   private JButton btnBg1, btnBg2, btnBg3, btnBg4, btnBg5; // ¹è°æ ¼³Á¤ ¹öÆ°
+   private JButton btnFS1, btnFS2, btnFS3; // ÆùÆ® »çÀÌÁî ¼³Á¤ ¹öÆ°
+   private JButton btnTS1, btnTS2, btnTS3; // Å×¸¶ ¼³Á¤ ¹öÆ°
+   private JButton btnAS1, btnAS2; // ¾Ë¶÷ ¼³Á¤ ¹öÆ°
 
-   private JLabel calendarShowPane, timeShowPane, teamNameShowPane;
+   private JLabel calendarShowPane, timeShowPane, teamNameShowPane, submitText;
 
    private String TimeZoneData = "Asia/Seoul";
 
-   private Font Smallfont1 = new Font("DS-Digital", Font.BOLD, 30); // fontì„¤ì •1(ì ìš©ì´ í•„ìš”í•¨) // small
-   private Font Smallfont2 = new Font("DS-Digital", Font.BOLD, 80); // fontì„¤ì •2(ì ìš©ì´ í•„ìš”í•¨)
-   private Font Smallfont3 = new Font("DS-Digital", Font.BOLD, 20); // fontì„¤ì •2(ì ìš©ì´ í•„ìš”í•¨)
+   private Font Smallfont1 = new Font("DS-Digital", Font.BOLD, 30); // font¼³Á¤1(Àû¿ëÀÌ ÇÊ¿äÇÔ) // small
+   private Font Smallfont2 = new Font("DS-Digital", Font.BOLD, 80); // font¼³Á¤2(Àû¿ëÀÌ ÇÊ¿äÇÔ)
+   private Font Smallfont3 = new Font("DS-Digital", Font.BOLD, 20); // font¼³Á¤2(Àû¿ëÀÌ ÇÊ¿äÇÔ)
 
-   private Font Mediumfont1 = new Font("DS-Digital", Font.BOLD, 40); // fontì„¤ì •1(ì ìš©ì´ í•„ìš”í•¨) // medium
-   private Font Mediumfont2 = new Font("DS-Digital", Font.BOLD, 120); // fontì„¤ì •2(ì ìš©ì´ í•„ìš”í•¨)
-   private Font Mediumfont3 = new Font("DS-Digital", Font.BOLD, 30); // fontì„¤ì •2(ì ìš©ì´ í•„ìš”í•¨)
+   private Font Mediumfont1 = new Font("DS-Digital", Font.BOLD, 40); // font¼³Á¤1(Àû¿ëÀÌ ÇÊ¿äÇÔ) // medium
+   private Font Mediumfont2 = new Font("DS-Digital", Font.BOLD, 120); // font¼³Á¤2(Àû¿ëÀÌ ÇÊ¿äÇÔ)
+   private Font Mediumfont3 = new Font("DS-Digital", Font.BOLD, 30); // font¼³Á¤2(Àû¿ëÀÌ ÇÊ¿äÇÔ)
 
-   private Font Largefont1 = new Font("DS-Digital", Font.BOLD, 50); // fontì„¤ì •1(ì ìš©ì´ í•„ìš”í•¨) // Large
-   private Font Largefont2 = new Font("DS-Digital", Font.BOLD, 160); // fontì„¤ì •2(ì ìš©ì´ í•„ìš”í•¨)
-   private Font Largefont3 = new Font("DS-Digital", Font.BOLD, 50); // fontì„¤ì •2(ì ìš©ì´ í•„ìš”í•¨)
+   private Font Largefont1 = new Font("DS-Digital", Font.BOLD, 50); // font¼³Á¤1(Àû¿ëÀÌ ÇÊ¿äÇÔ) // Large
+   private Font Largefont2 = new Font("DS-Digital", Font.BOLD, 160); // font¼³Á¤2(Àû¿ëÀÌ ÇÊ¿äÇÔ)
+   private Font Largefont3 = new Font("DS-Digital", Font.BOLD, 50); // font¼³Á¤2(Àû¿ëÀÌ ÇÊ¿äÇÔ)
 
    Color SimpleMode = new Color(255, 255, 255);
    Color BasicMode = new Color(255, 241, 169);
@@ -84,51 +71,56 @@ public class JAGUTIMES_Final_bata extends JFrame {
 //   
 
    
-   static JPanel page1 = new JPanel() {
-      Image background = new ImageIcon(JAGUTIMES_Final_bata.class.getResource("dd1361217.jpg")).getImage();
-      public void paint(Graphics g) {//ê·¸ë¦¬ëŠ” í•¨ìˆ˜
-            g.drawImage(background, 0, 0, null);//backgroundë¥¼ ê·¸ë ¤ì¤Œ      
-      }
-   };
-   
-   public void homeframe() {
-      setVisible(true);//ì°½ì´ ë³´ì´ê²Œ   
-      page1.setLayout(null);
-      page1.setBounds(0, 0, 1280, 720);
-      add(page1);
-   }   
-   
-   
-
-
+//   static JPanel page1 = new JPanel() {
+//      Image background = new ImageIcon(JAGUTIMES_Final_bata.class.getResource("dd1361217.jpg")).getImage();
+//      public void paint(Graphics g) {//±×¸®´Â ÇÔ¼ö
+//            g.drawImage(background, 0, 0, null);//background¸¦ ±×·ÁÁÜ      
+//      }
+//   };
+//   
+//   public void homeframe() {
+//      setVisible(true);//Ã¢ÀÌ º¸ÀÌ°Ô   
+//      page1.setLayout(null);
+//      page1.setBounds(0, 0, 1280, 720);
+//      add(page1);
+//   }   
+//   
    
 
-   // ë©”ì¸ ìœˆë„ìš° ì„¤ì •
-   public JAGUTIMES_Final_bata() {
+   // LoginInterface loginInterface = new LoginInterface();
+   
+   
+   
+   // ¸ŞÀÎ À©µµ¿ì ¼³Á¤
+   public JAGUTIMES_Final() {
+	   
+      this.setTitle("JaeGuTimes.ver 4.0 - ¸ŞÀÎÆĞ³Î");
+      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ¾ÈÁ¤ÀûÀ¸·Î jframeÀÌ Á¾·áµÇ°Ô ÇØÁÜ
+      
+      ImageIcon img = new ImageIcon(getClass().getResource("jaegutimes_logo_simple.jpg"));
+      this.setIconImage(img.getImage());
+      
 
-      this.setTitle("");
-      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ì•ˆì •ì ìœ¼ë¡œ jframeì´ ì¢…ë£Œë˜ê²Œ í•´ì¤Œ
-
-      // í”„ë ˆì„ì˜ íƒ€ì´í‹€ë°” ì„¤ì •
-      this.setUndecorated(true); // í”„ë ˆì„ì˜ íƒ€ì´í‹€ë°”ë¥¼ ì—†ì•°
-      this.addMouseListener(new moveWindows()); // ìœˆë„ìš° ì´ë™í•˜ê¸° ìœ„í•´ ì„¤ì •
-      this.addMouseMotionListener(new moveWindows()); // ìœˆë„ìš° ì´ë™í•˜ê¸° ìœ„í•´ ì„¤ì •
-      this.getContentPane().add(getClosePane(), BorderLayout.NORTH); // ìƒë‹¨ íŒ¨ë„
+      // ÇÁ·¹ÀÓÀÇ Å¸ÀÌÆ²¹Ù ¼³Á¤
+      this.setUndecorated(true); // ÇÁ·¹ÀÓÀÇ Å¸ÀÌÆ²¹Ù¸¦ ¾ø¾Ú
+      this.addMouseListener(new moveWindows()); // À©µµ¿ì ÀÌµ¿ÇÏ±â À§ÇØ ¼³Á¤
+      this.addMouseMotionListener(new moveWindows()); // À©µµ¿ì ÀÌµ¿ÇÏ±â À§ÇØ ¼³Á¤
+      this.getContentPane().add(getClosePane(), BorderLayout.NORTH); // »ó´Ü ÆĞ³Î
       
 //      this.getContentPane().setLayout(new FlowLayout());
-      this.getContentPane().add(getTimeDisplayPane()); // íƒ€ì„ì¡´ ë””ìŠ¤í”Œë ˆì´ íŒ¨ë„
+      this.getContentPane().add(getTimeDisplayPane()); // Å¸ÀÓÁ¸ µğ½ºÇÃ·¹ÀÌ ÆĞ³Î
       this.getContentPane().add(getDarkModePane(), BorderLayout.SOUTH);
       
       timeT.start();
       
 
-      this.setSize(1280, 720); // ë©”ì¸ì—ì„œ ê°€ë¡œ ì„¸ë¡œ í¬ê¸° ê°€ì ¸ì˜´
-      this.setResizable(false); // ì •í•´ì§„ì‚¬ì´ì¦ˆì—ì„œ ë³€ê²½ë¶ˆê°€
-      this.setVisible(true); // ë³´ì´ê²Œ
+      this.setSize(1280, 720); // ¸ŞÀÎ¿¡¼­ °¡·Î ¼¼·Î Å©±â °¡Á®¿È
+      this.setResizable(false); // Á¤ÇØÁø»çÀÌÁî¿¡¼­ º¯°æºÒ°¡
+      this.setVisible(true); // º¸ÀÌ°Ô
 
    
 
-      // JWindowë¥¼ í™”ë©´ ì¤‘ì•™ìœ¼ë¡œ ë„ìš°ê¸°
+      // JWindow¸¦ È­¸é Áß¾ÓÀ¸·Î ¶ç¿ì±â
       GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
       Point centerPoint = ge.getCenterPoint();
 
@@ -137,6 +129,8 @@ public class JAGUTIMES_Final_bata extends JFrame {
       this.setLocation(leftTopX, leftTopY);
 
    }
+   
+
 
 // /////////////////////////////////////////////////////////////
 
@@ -147,17 +141,17 @@ public class JAGUTIMES_Final_bata extends JFrame {
    JToggleButton BasicModedarkModeBtn = new JToggleButton(new ImageIcon(getClass().getResource("Sun.png")));
    JToggleButton DarkModedarkModeBtn = new JToggleButton(new ImageIcon(getClass().getResource("Moon.png")));
 
-   // ì¢…ë£Œ íŒ¨ë„
+   // Á¾·á ÆĞ³Î
    private JPanel closePane;
 
    public JPanel getClosePane() {
       if (closePane == null) {
          closePane = new JPanel();
-         closePane.setBackground(BasicMode); // ì¼ë°˜ ëª¨ë“œ
-//         closePane.setBackground(new Color(62, 78, 98)); // ë‹¤í¬ ëª¨ë“œ
-         closePane.setOpaque(true);// ë¼ë²¨ì„ ë¶ˆíˆ¬ëª…í•˜ê²Œ ì„¤ì •
+         closePane.setBackground(BasicMode); // ÀÏ¹İ ¸ğµå
+//         closePane.setBackground(new Color(62, 78, 98)); // ´ÙÅ© ¸ğµå
+         closePane.setOpaque(true);// ¶óº§À» ºÒÅõ¸íÇÏ°Ô ¼³Á¤
          closePane.setLayout(new BorderLayout());
-//         closePane.setBorder(new TitledBorder("ìƒë‹¨ íŒ¨ë„"));   
+//         closePane.setBorder(new TitledBorder("»ó´Ü ÆĞ³Î"));   
          closePane.add(getMenuBoxPane(), BorderLayout.WEST);
          closePane.add(getCloseBoxPane(), BorderLayout.EAST);
 
@@ -166,15 +160,15 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return closePane;
    }
 
-   // ë©”ë‰´ ì•„ì´ì½˜ë“¤
+   // ¸Ş´º ¾ÆÀÌÄÜµé
    public JPanel getCloseBoxPane() {
       if (closeBoxPane == null) {
          closeBoxPane = new JPanel();
          closeBoxPane.setBackground(BasicMode);
 //         closeBoxPane.setBackground(new Color(62, 78, 98));
-         closeBoxPane.setOpaque(true);// ë¼ë²¨ì„ ë¶ˆíˆ¬ëª…í•˜ê²Œ ì„¤ì •
+         closeBoxPane.setOpaque(true);// ¶óº§À» ºÒÅõ¸íÇÏ°Ô ¼³Á¤
 //            closePane.setLayout(new BorderLayout());
-//            closePane.setBorder(new TitledBorder("ìƒë‹¨ íŒ¨ë„"));
+//            closePane.setBorder(new TitledBorder("»ó´Ü ÆĞ³Î"));
 
          closeBoxPane.add(getCloseBtn(), BorderLayout.EAST);
 //            closePane.setPreferredSize(new java.awt.Dimension(1280, 50));
@@ -182,7 +176,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return closeBoxPane;
    }
 
-   // ì¢…ë£Œ ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ ì‹œìŠ¤í…œ ì¢…ë£Œ
+   // Á¾·á ¹öÆ°À» ´­·¶À» ¶§ ½Ã½ºÅÛ Á¾·á
    public JButton getCloseBtn() {
       if (closeBtn == null) {
 //         closeBtn = new JButton(new ImageIcon(getClass().getResource("Mode_off_on.png")));
@@ -203,15 +197,15 @@ public class JAGUTIMES_Final_bata extends JFrame {
 
 // /////////////////////////////////////////////////////////////   
 
-   // ë©”ë‰´ ì•„ì´ì½˜ë“¤
+   // ¸Ş´º ¾ÆÀÌÄÜµé
    public JPanel getMenuBoxPane() {
       if (menuBoxPane == null) {
          menuBoxPane = new JPanel();
 //         menuBoxPane.setBackground(new Color(255, 241, 169));
          menuBoxPane.setBackground(BasicMode);
-         menuBoxPane.setOpaque(true);// ë¼ë²¨ì„ ë¶ˆíˆ¬ëª…í•˜ê²Œ ì„¤ì •
+         menuBoxPane.setOpaque(true);// ¶óº§À» ºÒÅõ¸íÇÏ°Ô ¼³Á¤
 //            closePane.setLayout(new BorderLayout());
-//            closePane.setBorder(new TitledBorder("ìƒë‹¨ íŒ¨ë„"));
+//            closePane.setBorder(new TitledBorder("»ó´Ü ÆĞ³Î"));
 
          menuBoxPane.add(getUserBtn());
          menuBoxPane.add(getSettingBtn());
@@ -291,7 +285,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
    }
 
 // /////////////////////////////////////////////////////////////
-   // ë§ˆìš°ìŠ¤ë¡œ í™”ë©´ ì´ë™ êµ¬í˜„
+   // ¸¶¿ì½º·Î È­¸é ÀÌµ¿ ±¸Çö
    private Point initialClick;
 
    class moveWindows extends MouseAdapter {
@@ -312,21 +306,21 @@ public class JAGUTIMES_Final_bata extends JFrame {
          int X = thisX + xMoved;
          int Y = thisY + yMoved;
 
-         /* 10ë²ˆ */
-         jf.setLocation(X, Y); // jfì˜ ìœ„ì¹˜ ë³€ê²½
+         /* 10¹ø */
+         jf.setLocation(X, Y); // jfÀÇ À§Ä¡ º¯°æ
       }
    }
 
    //////////////////////////////////////////////////////////////
-   // ì‹œê°„ ë””ìŠ¤í”Œë ˆì´ íŒ¨ë„
+   // ½Ã°£ µğ½ºÇÃ·¹ÀÌ ÆĞ³Î
    public JPanel getTimeDisplayPane() {
       if (timeDisplayPane == null) {
          timeDisplayPane = new JPanel();
 //         timeDisplayPane.setBackground(new Color(255, 241, 169));
          timeDisplayPane.setBackground(BasicMode);
-         timeDisplayPane.setOpaque(true);// ë¼ë²¨ì„ ë¶ˆíˆ¬ëª…í•˜ê²Œ ì„¤ì •
+         timeDisplayPane.setOpaque(true);// ¶óº§À» ºÒÅõ¸íÇÏ°Ô ¼³Á¤
          timeDisplayPane.setLayout(new GridBagLayout());
-//         timeDisplayPane.setBorder(new TitledBorder("ì‹œê°„ ë””ìŠ¤í”Œë ˆì´ íŒ¨ë„"));
+//         timeDisplayPane.setBorder(new TitledBorder("½Ã°£ µğ½ºÇÃ·¹ÀÌ ÆĞ³Î"));
          timeDisplayPane.add(getTimesPane());
          
          timeDisplayPane.setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -334,35 +328,35 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return timeDisplayPane;
    }
 
-   // ì‹œê°„ ë¬¶ìŒ íŒ¨ë„
+   // ½Ã°£ ¹­À½ ÆĞ³Î
    public JPanel getTimesPane() {
       if (timesPane == null) {
          timesPane = new JPanel();
          timesPane.setBackground(Color.WHITE);
 //         timesPane.setLayout(new GridLayout(2, 1));
          timesPane.setLayout(new BorderLayout());
-//       timesPane.setBorder(new TitledBorder("ì‹œê³„ ë‚ ì§œ ì‹œê°„"));
+//       timesPane.setBorder(new TitledBorder("½Ã°è ³¯Â¥ ½Ã°£"));
 //         timesPane.setBackground(new Color(255, 241, 169));
          timesPane.setBackground(BasicMode);
          timesPane.add(getCalendarShowPane(), BorderLayout.NORTH);
          timesPane.add(getTimeShowPane(), BorderLayout.CENTER);
          timesPane.add(getTeamNameShowPane(), BorderLayout.SOUTH);
-         timesPane.setPreferredSize(new java.awt.Dimension(360, 130)); // small
+         timesPane.setPreferredSize(new java.awt.Dimension(380, 130)); // small
 //         timesPane.setPreferredSize(new java.awt.Dimension(520, 180));      // medium
 //         timesPane.setPreferredSize(new java.awt.Dimension(700, 250));      // large
          
-         homeframe();
+         // homeframe();
 
       }
       return timesPane;
    }
 
-   // ë‹¬ë ¥ íŒ¨ë„
+   // ´Ş·Â ÆĞ³Î
    public JLabel getCalendarShowPane() {
       if (calendarShowPane == null) {
          calendarShowPane = new JLabel("");
 //         calendarShowPane.setBackground(Color.WHITE);
-//         calendarShowPane.setBorder(new TitledBorder("ë‹¬ë ¥"));
+//         calendarShowPane.setBorder(new TitledBorder("´Ş·Â"));
 //         calendarShowPane.setBackground(new Color(255, 241, 169));
          calendarShowPane.setBackground(BasicMode);
          calendarShowPane.setFont(Smallfont1);
@@ -375,14 +369,14 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return calendarShowPane;
    }
 
-   // ì‹œê°„ íŒ¨ë„
+   // ½Ã°£ ÆĞ³Î
    public JLabel getTimeShowPane() {
       if (timeShowPane == null) {
          timeShowPane = new JLabel("");
 //         timeShowPane.setBackground(Color.WHITE);
 //         timeShowPane.setBackground(new Color(255, 241, 169));
          timeShowPane.setBackground(BasicMode);
-//            timeShowPane.setBorder(new TitledBorder("ì‹œê°„"));
+//            timeShowPane.setBorder(new TitledBorder("½Ã°£"));
          timeShowPane.setFont(Smallfont2);
          timeShowPane.setHorizontalAlignment(JLabel.CENTER);
          timeShowPane.setForeground(Color.BLACK);
@@ -393,21 +387,21 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return timeShowPane;
    }
 
-   // íŒ€ëª… íŒ¨ë„
+   // ÆÀ¸í ÆĞ³Î
    public JLabel getTeamNameShowPane() {
       if (teamNameShowPane == null) {
          teamNameShowPane = new JLabel("");
 //         teamNameShowPane.setBackground(Color.WHITE);
 //         teamNameShowPane.setBackground(new Color(255, 241, 169));
          teamNameShowPane.setBackground(BasicMode);
-//         timeShowPane.setBorder(new TitledBorder("ì‹œê°„"));
+//         timeShowPane.setBorder(new TitledBorder("½Ã°£"));
          teamNameShowPane.setFont(Smallfont3);
          teamNameShowPane.setHorizontalAlignment(JLabel.CENTER);
          teamNameShowPane.setForeground(Color.BLACK);
 
          timeT.setThirdMain(teamNameShowPane);
          
-         homeframe();
+         // homeframe();
 
       }
       return teamNameShowPane;
@@ -415,36 +409,47 @@ public class JAGUTIMES_Final_bata extends JFrame {
 
    //////////////////////////////////////////////////////////////
 
-//   this.getContentPane().add(getControlPane(), BorderLayout.SOUTH); // ì»¨íŠ¸ë¡¤ íŒ¨ë„
+//   this.getContentPane().add(getControlPane(), BorderLayout.SOUTH); // ÄÁÆ®·Ñ ÆĞ³Î
 //   
 //   JFrame
 
-   // ì»¨íŠ¸ë¡¤ íŒ¨ë„
+   // ÄÁÆ®·Ñ ÆĞ³Î
    public JFrame getControlPane() {
       if (controlPane == null) {
          controlPane = new JFrame();
-         controlPane.setLayout(new GridLayout(5, 1));
-//         controlPane.setBorder(new TitledBorder("ì»¨íŠ¸ë¡¤ íŒ¨ë„"));
+         controlPane.setTitle("JaeGuTimes.ver 4.0 - È¯°æ¼³Á¤ÆĞ³Î");
+
+         ImageIcon img = new ImageIcon(getClass().getResource("jaegutimes_logo_dark.jpg"));
+         controlPane.setIconImage(img.getImage());
+         
+       
+         
+         
+         controlPane.setLayout(new GridLayout(9, 1));
+//         controlPane.setBorder(new TitledBorder("ÄÁÆ®·Ñ ÆĞ³Î"));
+         controlPane.add(getUserNamePane());
+         controlPane.add(getPasswordPane());
          controlPane.add(getAlarmPane());
          controlPane.add(getThemePane());
          controlPane.add(getFontSizePane());
          controlPane.add(getTimeZonePane());
          controlPane.add(getBtnBgPane());
+         controlPane.add(getSubmitPane());  
+         controlPane.add(getSubmitConfirmPane());  
          
                   
          
-         controlPane.setSize(640, 360); // ë©”ì¸ì—ì„œ ê°€ë¡œ ì„¸ë¡œ í¬ê¸° ê°€ì ¸ì˜´
-         controlPane.setResizable(false); // ì •í•´ì§„ì‚¬ì´ì¦ˆì—ì„œ ë³€ê²½ë¶ˆê°€
-         controlPane.setVisible(false); // ë³´ì´ê²Œ
+         controlPane.setSize(950, 600); // ¸ŞÀÎ¿¡¼­ °¡·Î ¼¼·Î Å©±â °¡Á®¿È
+         controlPane.setResizable(false); // Á¤ÇØÁø»çÀÌÁî¿¡¼­ º¯°æºÒ°¡
+         controlPane.setVisible(false); // º¸ÀÌ°Ô
 
-         // JWindowë¥¼ í™”ë©´ ì¤‘ì•™ìœ¼ë¡œ ë„ìš°ê¸°
+         // JWindow¸¦ È­¸é Áß¾ÓÀ¸·Î ¶ç¿ì±â
          GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
          Point centerPoint = ge.getCenterPoint();
 
          int leftTopX = centerPoint.x - controlPane.getWidth() / 2;
          int leftTopY = centerPoint.y - controlPane.getHeight() / 2;
-         controlPane.setLocation(leftTopX, leftTopY);
-         
+         controlPane.setLocation(leftTopX, leftTopY);  
          
 
       }
@@ -452,14 +457,109 @@ public class JAGUTIMES_Final_bata extends JFrame {
    }
 
    //////////////////////////////////////////////////////////////
-   // ë‹¤í¬ëª¨ë“œ íŒ¨ë„
+   // »ç¿ëÀÚ ÀÌ¸§
+   public JPanel getUserNamePane() {
+	      if (userNamePane == null) {
+	    	  userNamePane = new JPanel();
+	    	  userNamePane.setBorder(new TitledBorder("»ç¿ëÀÚ ÀÌ¸§ ÆĞ³Î"));
+	    	  userNamePane.setBackground(Color.WHITE);
+	    	  userNamePane.add(getAlarmSetPane());
+//	         alarmPane.add(getBtnAS1());
+//	         alarmPane.add(getBtnAS2());
+	    	  
+	    	  JLabel userName = new JLabel("»ç¿ëÀÚ ÀÌ¸§ : "); 
+	    	  
+	    	  JTextField  userNameText = new JTextField();
+	    	  userNameText.setPreferredSize(new Dimension(300 ,30));
+	    	  userNameText.setFont(new Font("³ª´®", Font.PLAIN,20));
+	    	  
+	    	  JButton userNameBtn = new JButton("ÀÔ·Â");   	      
+	    	  
+	    	  
+	    	  
+    	      userNamePane.add(userName);
+    	      userNamePane.add(userNameText);
+    	      userNamePane.add(userNameBtn);
+    	      
+    	      
+    	      
+    	      userNameBtn.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
+    	            @Override
+    	            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
+    	            	JGDBUser.UserName = userNameText.getText();
+    	            	
+    	            	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
+    	            	System.out.println(JGDBUser.UserName);
+    	            }
+    	         });	    	  
+    	      
+    	      
+	      }
+	      return userNamePane;
+	   }
+	   
+
+   
+   
+   // ºñ¹Ğ¹øÈ£
+   public JPanel getPasswordPane() {
+	      if (passwordPane == null) {
+	    	  passwordPane = new JPanel();
+	    	  passwordPane.setBorder(new TitledBorder("ºñ¹Ğ¹øÈ£ ÆĞ³Î"));
+	    	  passwordPane.setBackground(Color.WHITE);
+	    	  
+	    	  JLabel password = new JLabel("ºñ¹Ğ¹øÈ£ : "); 
+	    	  
+	    	  JTextField  passwordText = new JTextField();
+	    	  passwordText.setPreferredSize(new Dimension(300 ,30));
+	    	  passwordText.setFont(new Font("³ª´®", Font.PLAIN,20));
+	    	  
+	    	  JButton passwordBtn = new JButton("ÀÔ·Â");
+    	      
+	    	  
+	    	  
+	    	  passwordPane.add(password);
+	    	  passwordPane.add(passwordText);
+	    	  passwordPane.add(passwordBtn);
+    	      
+	    	  
+	    	  
+	    	  passwordBtn.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
+  	            @Override
+  	            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
+  	            	JGDBUser.Password = passwordText.getText();
+  	          	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
+  	            }
+  	         });	    	  
+  	      
+	    	  
+	      }
+	      return passwordPane;
+	   }
+	   
+   
+   
+   
+   
+   //////////////////////////////////////////////////////////////
+   
+   
+   
+   
+   
+   
+   
+   
+   // ´ÙÅ©¸ğµå ÆĞ³Î
    public JPanel getDarkModePane() {
       if (darkModePane == null) {
          darkModePane = new JPanel();
          darkModePane.setBackground(BasicMode);
-         darkModePane.setOpaque(true);// ë¼ë²¨ì„ ë¶ˆíˆ¬ëª…í•˜ê²Œ ì„¤ì •
+         darkModePane.setOpaque(true);// ¶óº§À» ºÒÅõ¸íÇÏ°Ô ¼³Á¤
          darkModePane.setLayout(new BorderLayout());
-//         closePane.setBorder(new TitledBorder("ìƒë‹¨ íŒ¨ë„"));   
+//         closePane.setBorder(new TitledBorder("»ó´Ü ÆĞ³Î"));   
          darkModePane.add(getDarkModeBoxPane(), BorderLayout.EAST);
 
 //         darkModePane.setPreferredSize(new java.awt.Dimension(1280, 100));
@@ -472,9 +572,9 @@ public class JAGUTIMES_Final_bata extends JFrame {
       if (darkModeBoxPane == null) {
          darkModeBoxPane = new JPanel();
          darkModeBoxPane.setBackground(BasicMode);
-         darkModeBoxPane.setOpaque(true);// ë¼ë²¨ì„ ë¶ˆíˆ¬ëª…í•˜ê²Œ ì„¤ì •
+         darkModeBoxPane.setOpaque(true);// ¶óº§À» ºÒÅõ¸íÇÏ°Ô ¼³Á¤
 //         darkModeBoxPane.setLayout(new BorderLayout());
-//         closePane.setBorder(new TitledBorder("ìƒë‹¨ íŒ¨ë„"));   
+//         closePane.setBorder(new TitledBorder("»ó´Ü ÆĞ³Î"));   
          darkModeBoxPane.add(getDarkModeBtn());
 
 //         darkModePane.setPreferredSize(new java.awt.Dimension(1280, 100));
@@ -483,7 +583,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return darkModeBoxPane;
    }
 
-   // ë‹¤í¬ëª¨ë“œ ë²„íŠ¼
+   // ´ÙÅ©¸ğµå ¹öÆ°
    public JToggleButton getDarkModeBtn() {
       if (darkModeBtn == null) {
          darkModeBtn = BasicModedarkModeBtn;
@@ -495,7 +595,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
             @Override
             public void itemStateChanged(ItemEvent e) {
                if (e.getStateChange() == ItemEvent.SELECTED) {
-                  closePane.setBackground(DarkMode); // ë‹¤í¬ ëª¨ë“œ
+                  closePane.setBackground(DarkMode); // ´ÙÅ© ¸ğµå
                   closeBoxPane.setBackground(DarkMode);
                   closeBtn.setBackground(DarkMode);
                   menuBoxPane.setBackground(DarkMode);
@@ -524,7 +624,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
                   teamNameShowPane.setForeground(Color.WHITE);
 
                } else {
-                  closePane.setBackground(BasicMode); // ì¼ë°˜ ëª¨ë“œ
+                  closePane.setBackground(BasicMode); // ÀÏ¹İ ¸ğµå
                   closeBoxPane.setBackground(BasicMode);
                   closeBtn.setBackground(BasicMode);
                   menuBoxPane.setBackground(BasicMode);
@@ -566,18 +666,107 @@ public class JAGUTIMES_Final_bata extends JFrame {
    public JPanel getAlarmPane() {
       if (alarmPane == null) {
          alarmPane = new JPanel();
-         alarmPane.setBorder(new TitledBorder("ì•ŒëŒ íŒ¨ë„"));
+         alarmPane.setBorder(new TitledBorder("¾Ë¶÷ ÆĞ³Î"));
          alarmPane.setBackground(Color.WHITE);
-         alarmPane.add(getBtnAS1());
-         alarmPane.add(getBtnAS2());
+         alarmPane.add(getAlarmSetPane());
+//         alarmPane.add(getBtnAS1());
+//         alarmPane.add(getBtnAS2());
       }
       return alarmPane;
    }
+   
+   public JPanel getAlarmSetPane() {
+	      if (alarmSetPane == null) {
+	    	  alarmSetPane = new JPanel();
+//	    	  alarmSetPane.setBorder(new TitledBorder("¾Ë¶÷ ÆĞ³Î"));
+	    	  alarmSetPane.setBackground(Color.WHITE);
+	    	  alarmSetPane.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+	    	  
+	    	  alarmSetPane.setPreferredSize(new java.awt.Dimension(900, 60)); // small
+	    	 
+	    	  
+	    	   String yearN, monthN, dayN, dowN, hourN, minuteN;
+	    	   JTextField year, month, day, dow, hour, minute;
+	    	   JButton button, delBtn;
+	    	   String str;
+	    	   JPanel ap, setAlarmPanel;   // ¾Ë¶÷ÆĞ³Î°ú ¿¬µ¿, ¾Ë¶÷ÆĞ³Î»ı¼º
+	    	   JLabel timeSet;   // ½Ã°£Ãâ·Â ·¹ÀÌºí
+	    	  
+	    	   button = new JButton("Ãß°¡");
+	    	     // button.addActionListener(this);
+	    	      
+	    	      delBtn = new JButton("DELETE");
+	    	      //delBtn.addActionListener(this);	    	    
+	    	      
+	    	      // ¿¬µµ ¼±ÅÃ
+	    	      year = new JTextField();
+	    	      year.setPreferredSize(new Dimension(100 ,30));
+	    	      year.setFont(new Font("³ª´®", Font.PLAIN,20));
+	    	      
+	    	      // ¿ù ¼±ÅÃ
+	    	      month = new JTextField();
+	    	      month.setPreferredSize(new Dimension(40 ,30));
+	    	      month.setFont(new Font("³ª´®", Font.PLAIN,20)); 
+	    	      
+	    	      // ÀÏ ¼±ÅÃ
+	    	      day = new JTextField();
+	    	      day.setPreferredSize(new Dimension(40, 30));
+	    	      day.setFont(new Font("³ª´®", Font.PLAIN,20));
+	    	      
+	    	      // ¿äÀÏ ¼±ÅÃ
+	    	      dow = new JTextField();
+	    	      dow.setPreferredSize(new Dimension(40, 30));
+	    	      dow.setFont(new Font("³ª´®", Font.PLAIN,20));
+	    	      
+	    	      // ½Ã°£ ¼±ÅÃ
+	    	      hour = new JTextField();
+	    	      hour.setPreferredSize(new Dimension(40   ,30));
+	    	      hour.setFont(new Font("³ª´®", Font.PLAIN,20));
+	    	      
+	    	      // ºĞ ¼±ÅÃ
+	    	      minute = new JTextField();
+	    	      minute.setPreferredSize(new Dimension(40 ,30));
+	    	      minute.setFont(new Font("³ª´®", Font.PLAIN,20));
+	    	      
+	    	      
+	    	      
+	    	      JLabel lblYear = new JLabel("³â"); 
+	    	      JLabel lblMonth = new JLabel("¿ù"); 
+	    	      JLabel lblDay = new JLabel("ÀÏ      "); 
+	    	      JLabel lbldoW = new JLabel("¿äÀÏ      "); 
+	    	      JLabel lblHour = new JLabel("½Ã"); 
+	    	      JLabel lblMinute = new JLabel("ºĞ      "); 
+
+	    	      alarmSetPane.add(year);
+	    	      alarmSetPane.add(lblYear);
+	    	      alarmSetPane.add(month);
+	    	      alarmSetPane.add(lblMonth);
+	    	      alarmSetPane.add(day);
+	    	      alarmSetPane.add(lblDay);
+	    	      alarmSetPane.add(dow);
+	    	      alarmSetPane.add(lbldoW);
+	    	      alarmSetPane.add(hour);
+	    	      alarmSetPane.add(lblHour);
+	    	      alarmSetPane.add(minute);
+	    	      alarmSetPane.add(lblMinute);	    	      
+	    	      alarmSetPane.add(button);  	
+	    	      
+	    	      alarmSetPane.add(getBtnAS2());
+	    	  
+	    	  
+	      }
+	      return alarmSetPane;
+	   }
+   
+   
+  
+   
+   
 
    private JButton getBtnAS1() {
       if (btnAS1 == null) {
          btnAS1 = new JButton();
-         btnAS1.setText("ì•ŒëŒì„¤ì •");
+         btnAS1.setText("¾Ë¶÷¼³Á¤");
          btnAS1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                new JGAlarmSet();
@@ -590,7 +779,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnAS2() {
       if (btnAS2 == null) {
          btnAS2 = new JButton();
-         btnAS2.setText("ì•ŒëŒì‚­ì œ");
+         btnAS2.setText("¾Ë¶÷»èÁ¦");
 //         btnAS1.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
 //               JFileChooser jFileChooser = new JFileChooser();
@@ -601,11 +790,11 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return btnAS2;
    }
 
-   // í…Œë§ˆ íŒ¨ë„
+   // Å×¸¶ ÆĞ³Î
    public JPanel getThemePane() {
       if (themePane == null) {
          themePane = new JPanel();
-         themePane.setBorder(new TitledBorder("í…Œë§ˆ íŒ¨ë„"));
+         themePane.setBorder(new TitledBorder("Å×¸¶ ÆĞ³Î"));
          themePane.setBackground(Color.WHITE);
          themePane.add(getBtnTS1());
          themePane.add(getBtnTS2());
@@ -614,16 +803,16 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return themePane;
    }
 
-   // ì‹¬í”Œëª¨ë“œ ë²„íŠ¼
+   // ½ÉÇÃ¸ğµå ¹öÆ°
    private JButton getBtnTS1() {
       if (btnTS1 == null) {
          btnTS1 = new JButton();
-         btnTS1.setText("ì‹¬í”Œëª¨ë“œ");
+         btnTS1.setText("½ÉÇÃ¸ğµå");
 
-         btnTS1.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnTS1.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
-               closePane.setBackground(SimpleMode); // ì¼ë°˜ ëª¨ë“œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
+               closePane.setBackground(SimpleMode); // ÀÏ¹İ ¸ğµå
                closeBoxPane.setBackground(SimpleMode);
                closeBtn.setBackground(SimpleMode);
                menuBoxPane.setBackground(SimpleMode);
@@ -650,22 +839,28 @@ public class JAGUTIMES_Final_bata extends JFrame {
                calendarShowPane.setForeground(Color.BLACK);
                timeShowPane.setForeground(Color.BLACK);
                teamNameShowPane.setForeground(Color.BLACK);
+               
+               
+               JGDBUser.DarkMode = "½ÉÇÃ¸ğµå";
+               
+           	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
             }
          });
       }
       return btnTS1;
    }
 
-   // ë² ì´ì§ ëª¨ë“œ ë²„íŠ¼
+   // º£ÀÌÁ÷ ¸ğµå ¹öÆ°
    private JButton getBtnTS2() {
       if (btnTS2 == null) {
          btnTS2 = new JButton();
-         btnTS2.setText("ë² ì´ì§ëª¨ë“œ");
+         btnTS2.setText("º£ÀÌÁ÷¸ğµå");
 
-         btnTS2.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnTS2.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
-               closePane.setBackground(BasicMode); // ì¼ë°˜ ëª¨ë“œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
+               closePane.setBackground(BasicMode); // ÀÏ¹İ ¸ğµå
                closeBoxPane.setBackground(BasicMode);
                closeBtn.setBackground(BasicMode);
                menuBoxPane.setBackground(BasicMode);
@@ -692,6 +887,11 @@ public class JAGUTIMES_Final_bata extends JFrame {
                calendarShowPane.setForeground(Color.BLACK);
                timeShowPane.setForeground(Color.BLACK);
                teamNameShowPane.setForeground(Color.BLACK);
+               
+               JGDBUser.DarkMode = "º£ÀÌÁ÷¸ğµå";
+               
+           	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
 
             }
          });
@@ -700,16 +900,16 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return btnTS2;
    }
 
-   // ë‹¤í¬ëª¨ë“œ ë²„íŠ¼
+   // ´ÙÅ©¸ğµå ¹öÆ°
    private JButton getBtnTS3() {
       if (btnTS3 == null) {
          btnTS3 = new JButton();
-         btnTS3.setText("ë‹¤í¬ëª¨ë“œ");
+         btnTS3.setText("´ÙÅ©¸ğµå");
 
-         btnTS3.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnTS3.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
-               closePane.setBackground(DarkMode); // ë‹¤í¬ ëª¨ë“œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
+               closePane.setBackground(DarkMode); // ´ÙÅ© ¸ğµå
                closeBoxPane.setBackground(DarkMode);
                closeBtn.setBackground(DarkMode);
                menuBoxPane.setBackground(DarkMode);
@@ -736,6 +936,11 @@ public class JAGUTIMES_Final_bata extends JFrame {
                calendarShowPane.setForeground(Color.WHITE);
                timeShowPane.setForeground(Color.WHITE);
                teamNameShowPane.setForeground(Color.WHITE);
+               
+               JGDBUser.DarkMode = "´ÙÅ©¸ğµå";
+               
+           	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
             }
          });
 
@@ -743,11 +948,11 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return btnTS3;
    }
 
-   // í°íŠ¸ ì‚¬ì´ì¦ˆ íŒ¨ë„
+   // ÆùÆ® »çÀÌÁî ÆĞ³Î
    public JPanel getFontSizePane() {
       if (fontSizePane == null) {
          fontSizePane = new JPanel();
-         fontSizePane.setBorder(new TitledBorder("í°íŠ¸ ì‚¬ì´ì¦ˆ íŒ¨ë„"));
+         fontSizePane.setBorder(new TitledBorder("ÆùÆ® »çÀÌÁî ÆĞ³Î"));
          fontSizePane.setBackground(Color.WHITE);
          fontSizePane.add(getBtnFS1());
          fontSizePane.add(getBtnFS2());
@@ -756,20 +961,26 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return fontSizePane;
    }
 
-   // í°íŠ¸ íŒ¨ë„ ë²„íŠ¼
+   // ÆùÆ® ÆĞ³Î ¹öÆ°
    private JButton getBtnFS1() {
       if (btnFS1 == null) {
          btnFS1 = new JButton();
-         btnFS1.setText("ì†Œ");
+         btnFS1.setText("¼Ò");
 
-         btnFS1.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnFS1.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                calendarShowPane.setFont(Smallfont1);
                timeShowPane.setFont(Smallfont2);
                teamNameShowPane.setFont(Smallfont3);
 
-               timesPane.setPreferredSize(new java.awt.Dimension(360, 130)); // small
+               timesPane.setPreferredSize(new java.awt.Dimension(360, 140)); // small
+               
+	            	JGDBUser.FontSize = "¼Ò";
+	            	
+	            	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
+
             }
          });
 
@@ -780,16 +991,21 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnFS2() {
       if (btnFS2 == null) {
          btnFS2 = new JButton();
-         btnFS2.setText("ì¤‘");
+         btnFS2.setText("Áß");
 
-         btnFS2.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnFS2.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                calendarShowPane.setFont(Mediumfont1);
                timeShowPane.setFont(Mediumfont2);
                teamNameShowPane.setFont(Mediumfont3);
 
-               timesPane.setPreferredSize(new java.awt.Dimension(535, 180)); // medium
+               timesPane.setPreferredSize(new java.awt.Dimension(535, 170)); // medium
+               
+            	JGDBUser.FontSize = "Áß";
+            	
+            	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
             }
          });
       }
@@ -799,27 +1015,32 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnFS3() {
       if (btnFS3 == null) {
          btnFS3 = new JButton();
-         btnFS3.setText("ëŒ€");
+         btnFS3.setText("´ë");
 
-         btnFS3.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnFS3.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                calendarShowPane.setFont(Largefont1);
                timeShowPane.setFont(Largefont2);
                teamNameShowPane.setFont(Largefont3);
 
-               timesPane.setPreferredSize(new java.awt.Dimension(715, 250)); // large
+               timesPane.setPreferredSize(new java.awt.Dimension(715, 260)); // large
+               
+            	JGDBUser.FontSize = "´ë";
+            	
+            	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
             }
          });
       }
       return btnFS3;
    }
 
-   // ì‹œê°„ íŒ¨ë„
+   // ½Ã°£ ÆĞ³Î
    public JPanel getTimeZonePane() {
       if (timePane == null) {
          timePane = new JPanel();
-         timePane.setBorder(new TitledBorder("ì‹œê°„ íŒ¨ë„"));
+         timePane.setBorder(new TitledBorder("½Ã°£ ÆĞ³Î"));
          timePane.setBackground(Color.WHITE);
          timePane.add(getBtnTZ1());
          timePane.add(getBtnTZ2());
@@ -830,18 +1051,23 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return timePane;
    }
 
-   // ì‹œê°„ íŒ¨ë„ ë²„íŠ¼
+   // ½Ã°£ ÆĞ³Î ¹öÆ°
    private JButton getBtnTZ1() {
       if (btnTZ1 == null) {
          btnTZ1 = new JButton();
-         btnTZ1.setText("í•œêµ­");
+         btnTZ1.setText("ÇÑ±¹");
 
-         btnTZ1.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnTZ1.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                TimeZoneData = "Asia/Seoul";
                System.out.println(TimeZoneData);
                timeT.setTime(TimeZone.getTimeZone(TimeZoneData));
+               
+               JGDBUser.Country = "ÇÑ±¹/¼­¿ï";
+               
+           	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
             }
          });
 
@@ -852,14 +1078,18 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnTZ2() {
       if (btnTZ2 == null) {
          btnTZ2 = new JButton();
-         btnTZ2.setText("ë‰´ìš•");
+         btnTZ2.setText("´º¿å");
 
-         btnTZ2.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnTZ2.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                TimeZoneData = "America/New_York";
                System.out.println(TimeZoneData);
                timeT.setTime(TimeZone.getTimeZone(TimeZoneData));
+               
+               JGDBUser.Country = "´º¿å/¹Ì±¹";
+           	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
             }
          });
       }
@@ -869,14 +1099,19 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnTZ3() {
       if (btnTZ3 == null) {
          btnTZ3 = new JButton();
-         btnTZ3.setText("íŒŒë¦¬");
+         btnTZ3.setText("ÆÄ¸®");
 
-         btnTZ3.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnTZ3.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                TimeZoneData = "Europe/Paris";
                System.out.println(TimeZoneData);
                timeT.setTime(TimeZone.getTimeZone(TimeZoneData));
+               
+               JGDBUser.Country = "ÆÄ¸®/ÇÁ¶û½º";
+               
+           	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
             }
          });
 
@@ -887,14 +1122,19 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnTZ4() {
       if (btnTZ4 == null) {
          btnTZ4 = new JButton();
-         btnTZ4.setText("ëŸ°ë˜");
+         btnTZ4.setText("·±´ø");
 
-         btnTZ4.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnTZ4.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                TimeZoneData = "Europe/London";
                System.out.println(TimeZoneData);
                timeT.setTime(TimeZone.getTimeZone(TimeZoneData));
+               
+               JGDBUser.Country = "·±´ø/¿µ±¹";
+               
+           	submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
+
             }
          });
       }
@@ -904,25 +1144,29 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnTZ5() {
       if (btnTZ5 == null) {
          btnTZ5 = new JButton();
-         btnTZ5.setText("ì‹œë“œë‹ˆ");
+         btnTZ5.setText("Äµ¹ö¶ó");
 
-         btnTZ5.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnTZ5.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                TimeZoneData = "Australia/Canberra";
                System.out.println(TimeZoneData);
                timeT.setTime(TimeZone.getTimeZone(TimeZoneData));
+               
+               JGDBUser.Country = "Äµ¹ö¶ó/È£ÁÖ";
+               
+               submitText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");
             }
          });
       }
       return btnTZ5;
    }
 
-   // ë°°ê²½ íŒ¨ë„
+   // ¹è°æ ÆĞ³Î
    private JPanel getBtnBgPane() {
       if (btnBgPane == null) {
          btnBgPane = new JPanel();
-         btnBgPane.setBorder(new TitledBorder("ë°°ê²½ íŒ¨ë„"));
+         btnBgPane.setBorder(new TitledBorder("¹è°æ ÆĞ³Î"));
          btnBgPane.setBackground(Color.WHITE);
          btnBgPane.add(getBtnBg1());
          btnBgPane.add(getBtnBg2());
@@ -933,23 +1177,18 @@ public class JAGUTIMES_Final_bata extends JFrame {
       return btnBgPane;
    }
 
-   // ë°°ê²½ íŒ¨ë„ ë²„íŠ¼
+   // ¹è°æ ÆĞ³Î ¹öÆ°
    private JButton getBtnBg1() {
       if (btnBg1 == null) {
          btnBg1 = new JButton();
-         btnBg1.setText("ë°°ê²½1");
+         btnBg1.setText("¹è°æ1");
 
-         btnBg1.addMouseListener(new MouseAdapter() { // ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
+         btnBg1.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
             @Override
-            public void mousePressed(MouseEvent e) { // ë§ˆìš°ìŠ¤ ëˆŒë €ì„ë•Œ
+            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
                
-               
-               
-               
-               
-      
 
-//            //closePane.setBackground(null); // ë‹¤í¬ ëª¨ë“œ
+//            //closePane.setBackground(null); // ´ÙÅ© ¸ğµå
 //            //closeBoxPane.setBackground(null);
 //            //closeBtn.setBackground(null);
 //            //menuBoxPane.setBackground(null);
@@ -986,7 +1225,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnBg2() {
       if (btnBg2 == null) {
          btnBg2 = new JButton();
-         btnBg2.setText("ë°°ê²½2");
+         btnBg2.setText("¹è°æ2");
       }
       return btnBg2;
    }
@@ -994,7 +1233,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnBg3() {
       if (btnBg3 == null) {
          btnBg3 = new JButton();
-         btnBg3.setText("ë°°ê²½3");
+         btnBg3.setText("¹è°æ3");
       }
       return btnBg3;
    }
@@ -1002,7 +1241,7 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnBg4() {
       if (btnBg4 == null) {
          btnBg4 = new JButton();
-         btnBg4.setText("ë°°ê²½4");
+         btnBg4.setText("¹è°æ4");
       }
       return btnBg4;
    }
@@ -1010,13 +1249,82 @@ public class JAGUTIMES_Final_bata extends JFrame {
    private JButton getBtnBg5() {
       if (btnBg5 == null) {
          btnBg5 = new JButton();
-         btnBg5.setText("ë°°ê²½5");
+         btnBg5.setText("¹è°æ5");
       }
       return btnBg5;
    }
-
    // /////////////////////////////////////////////////////////////
-   // ì‹œê°„ ì…‹íŒ… í´ë˜ìŠ¤
+ 
+   
+   // µ¥ÀÌÅÍº£ÀÌ½º ÀúÀåÇÏ±â
+   public JPanel getSubmitPane() {
+	      if (submitPane == null) {
+	    	  submitPane = new JPanel();
+	    	  submitPane.setBorder(new TitledBorder("µ¥ÀÌÅÍº£ÀÌ½º ÀúÀå ÆĞ³Î"));
+	    	  submitPane.setBackground(Color.WHITE);
+	    	 
+	    	  
+	    	  
+	    	  String submitTextCheck = "[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ";
+	    	  
+	    	  submitText = new JLabel(submitTextCheck);	    	  
+	    	
+ 	      
+	    	  submitPane.add(submitText);
+	    	  
+	    	  
+	    	  JButton submitBtn = new JButton("ÀúÀåÇÏ±â");
+ 	      
+	    	  
+	    	  submitPane.add(submitBtn);
+	    	  
+	    	  submitBtn.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
+	  	            @Override
+	  	            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§	  	            	
+	  	            	new JGDBInsert();	  	            	
+	  	            	
+	  	            }
+	  	         });	
+ 	      
+	      }
+	      return submitPane;
+	   }
+	   
+   
+
+   
+   // µ¥ÀÌÅÍº£ÀÌ½º ÀúÀå È®ÀÎÇÏ±â
+   public JPanel getSubmitConfirmPane() {
+	      if (submitConfirmPane == null) {
+	    	  submitConfirmPane = new JPanel();
+	    	  submitConfirmPane.setBorder(new TitledBorder("µ¥ÀÌÅÍº£ÀÌ½º ÀúÀåÈ®ÀÎ ÆĞ³Î"));
+	    	  submitConfirmPane.setBackground(Color.WHITE);
+	    	 
+	    	  String submitConfirmTextCheck = "[   µ¥ÀÌÅÍº£ÀÌ½º ÀúÀåÈ®ÀÎ ÆĞ³Î   ]     ";
+	    	  
+	    	  JLabel submitConfirmText = new JLabel(submitConfirmTextCheck);
+	    	  
+	    	  JButton submitConfirmBtn = new JButton("»ç¿ëÀÚÁ¤º¸ È®ÀÎÇÏ±â");
+ 	      
+	    	  submitConfirmPane.add(submitConfirmText);
+	    	  submitConfirmPane.add(submitConfirmBtn);
+	    	  
+	    	  submitConfirmBtn.addMouseListener(new MouseAdapter() { // ¸¶¿ì½º ÀÌº¥Æ®
+	  	            @Override
+	  	            public void mousePressed(MouseEvent e) { // ¸¶¿ì½º ´­·¶À»¶§
+	  	            	new JGDBUserSelect();
+	  	            	submitConfirmText.setText("[   "+ JGDBUser.UserName + " / " + JGDBUser.Password + " / "  + JGDBUser.DarkMode + " / " + JGDBUser.FontSize + " / " +  JGDBUser.Country + "   ]     ");	  	            	
+	  	            }
+	  	         });	
+ 	      
+	      }
+	      return submitConfirmPane;
+	   }  
+   
+   
+   
+   // /////////////////////////////////////////////////////////////
+   // ½Ã°£ ¼ÂÆÃ Å¬·¡½º
    public class TimeDataSetting extends Thread {
 
       private TimeZone time;
@@ -1057,30 +1365,30 @@ public class JAGUTIMES_Final_bata extends JFrame {
 
       @Override
       public void run() {
-         one = new SimpleDateFormat("yyyy . MM . dd  E", Locale.ENGLISH); // z : KST í‘œì‹œ
+         one = new SimpleDateFormat("yyyy . MM . dd  E", Locale.ENGLISH); // z : KST Ç¥½Ã
          two = new SimpleDateFormat("HH : mm : ss", Locale.ENGLISH);
          time = TimeZone.getTimeZone(TimeZoneData);
-         while (true) {// ë¬´ì¡°ê±´ ì‹¤í–‰
+         while (true) {// ¹«Á¶°Ç ½ÇÇà
             Date date = new Date();
 
             one.setTimeZone(time);
             two.setTimeZone(time);
-            try { // íŠ¸ë¼ì´
+            try { // Æ®¶óÀÌ
                firstMain.setText(one.format(date));
                secondMain.setText(two.format(date));
                thirdMain.setText("JG Times");
-               Thread.sleep(1000);// 1ì´ˆ
+               Thread.sleep(1000);// 1ÃÊ
             } catch (Exception e) {
-            } // ì˜ˆì™¸ì²˜ë¦¬
+            } // ¿¹¿ÜÃ³¸®
          }
       }
-   }
+   } 
    // /////////////////////////////////////////////////////////////
 
    public static void main(String[] args) {
       SwingUtilities.invokeLater(new Runnable() {
          public void run() {
-            JAGUTIMES_Final_bata jFrame = new JAGUTIMES_Final_bata();
+            JAGUTIMES_Final jFrame = new JAGUTIMES_Final();
             jFrame.setVisible(true);
          }
       });

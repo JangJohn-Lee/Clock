@@ -1,3 +1,5 @@
+package JAEGUTIMES_Final_ver;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,19 +34,19 @@ public class LoginInterface extends JFrame {
    private JLabel userName, passWord, counTry, darkMode, fontSize;
    private JTextField uName, uPw;
    
-   private Font font = new Font("DS-Digital", Font.BOLD, 30); // label font ÏÑ§Ï†ï
-   private Font cnBtnFont = new Font("DS-Digital", Font.BOLD,10); // button font
-   private Font mdBtnFont = new Font("DS-Digital", Font.BOLD,20); // button font
+   private Font font = new Font("DS-Digital", Font.BOLD, 30); // label font º≥¡§
+   private Font cnBtnFont = new Font("DS-Digital", Font.BOLD,15); // button font
+   private Font mdBtnFont = new Font("DS-Digital", Font.BOLD,25); // button font
    private Font szBtnFont = new Font("DS-Digital", Font.BOLD,30); // button font
    Dimension cntSize = new Dimension(40,40);
-   Dimension mdSize = new Dimension(90,40);
+   Dimension mdSize = new Dimension(90, 40);
    Dimension szSize = new Dimension(40,40);
 
    public LoginInterface() {
-      // Ï†úÎ™© ÌëúÏãúÏ§Ñ ÎÇ¥Ïö©
+      // ¡¶∏Ò «•Ω√¡Ÿ ≥ªøÎ
       this.setTitle("Login");
 
-      // Ï¢ÖÎ£å Î≤ÑÌäº Í∏∞Î≥∏ Í∏∞Îä•
+      // ¡æ∑· πˆ∆∞ ±‚∫ª ±‚¥…
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
@@ -57,11 +59,11 @@ public class LoginInterface extends JFrame {
       this.getContentPane().add(getPaneSubmit());      
       
 
-      // JFrame ÌÅ¨Í∏∞
-      this.setSize(500, 600);
+      // JFrame ≈©±‚
+      this.setSize(400, 600);
       this.setResizable(false);
 
-      // JWindowÎ•º ÌôîÎ©¥ Ï§ëÏïôÏúºÎ°ú ÎùÑÏö∞Í∏∞
+      // JWindow∏¶ »≠∏È ¡ﬂæ”¿∏∑Œ ∂ÁøÏ±‚
       GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
       Point centerPoint = ge.getCenterPoint();
       int leftTopX = centerPoint.x - this.getWidth() / 2;
@@ -70,7 +72,7 @@ public class LoginInterface extends JFrame {
       this.setVisible(true);
    }
 
-   // UserNameÌå®ÎÑê
+   // UserName∆–≥Œ
    public JPanel getPaneUserName() {
       if (paneUserName == null) {
          paneUserName = new JPanel();
@@ -86,14 +88,14 @@ public class LoginInterface extends JFrame {
    public JLabel getUserName() {
       if (userName == null) {
          userName = new JLabel("USERNAME");
-         // Label Ïóê ÎåÄÌïú Center Ï†ïÎ†¨
+         // Label ø° ¥Î«— Center ¡§∑ƒ
          userName.setHorizontalAlignment(JLabel.CENTER);
          userName.setFont(font);
       }
       return userName;
    };
    
-   // UserNameÌå®ÎÑê
+   // UserName∆–≥Œ
    public JPanel getunameBox() {
       if (unameBox == null) {
          unameBox = new JPanel();
@@ -105,7 +107,7 @@ public class LoginInterface extends JFrame {
       return unameBox;
    }
 
-   // uName ÏûÖÎ†•
+   // uName ¿‘∑¬
    public JTextField getuName() {
       if (uName == null) {
          uName = new JTextField(10);
@@ -121,7 +123,7 @@ public class LoginInterface extends JFrame {
    
    
    
-   // panePassWordÌå®ÎÑê
+   // panePassWord∆–≥Œ
    public JPanel getPanePassWord() {
       if (panePassWord == null) {
          panePassWord = new JPanel();
@@ -146,7 +148,7 @@ public class LoginInterface extends JFrame {
       return passWord;
    };
    
-   // userPw Ìå®ÎÑê
+   // userPw ∆–≥Œ
    public JPanel getPwBox() {
       if (pwBox == null) {
          pwBox = new JPanel();
@@ -159,7 +161,7 @@ public class LoginInterface extends JFrame {
    }
    
 
-   // uPw ÏûÖÎ†•
+   // uPw ¿‘∑¬
    public JTextField getuPw() {
       if (uPw == null) {
          uPw = new JTextField(10);
@@ -179,7 +181,7 @@ public class LoginInterface extends JFrame {
    
    
    
-   // paneCountryÌå®ÎÑê
+   // paneCountry∆–≥Œ
    public JPanel getPaneCountry() {
       if (paneCountry == null) {
          paneCountry = new JPanel();
@@ -192,7 +194,7 @@ public class LoginInterface extends JFrame {
       return paneCountry;
    }
    
-   // Country ÎùºÎ≤®
+   // Country ∂Û∫ß
    public JLabel getCountry() {
       if (counTry == null) {
          counTry = new JLabel("COUNTRY");
@@ -203,7 +205,7 @@ public class LoginInterface extends JFrame {
    };
    
 
-   // paneCountry Ìå®ÎÑê
+   // paneCountry ∆–≥Œ
    public JPanel getCountryBox() {
       if (countryBox == null) {
          countryBox = new JPanel();
@@ -223,7 +225,7 @@ public class LoginInterface extends JFrame {
       return countryBox;
    }
 
-   // kor Î≤ÑÌäº
+   // kor πˆ∆∞
    public JButton getkorBtn() {
       if (korBtn == null) {
          korBtn = new JButton("KOR");
@@ -231,14 +233,14 @@ public class LoginInterface extends JFrame {
          korBtn.setPreferredSize(cntSize);
          korBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
       return korBtn;
    };
    
-   // us Î≤ÑÌäº
+   // us πˆ∆∞
    public JButton getusBtn() {
       if (usBtn == null) {
          usBtn = new JButton("USA");
@@ -247,14 +249,14 @@ public class LoginInterface extends JFrame {
 
          usBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
       return usBtn;
    };
    
-   // UK Î≤ÑÌäº
+   // UK πˆ∆∞
    public JButton getukBtn() {
       if (ukBtn == null) {
          ukBtn = new JButton("UK");
@@ -263,14 +265,14 @@ public class LoginInterface extends JFrame {
 
          ukBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
       return ukBtn;
    };
    
-   // FRANCE Î≤ÑÌäº
+   // FRANCE πˆ∆∞
    public JButton getfranBtn() {
       if (franBtn == null) {
          franBtn = new JButton("FRA");
@@ -279,14 +281,14 @@ public class LoginInterface extends JFrame {
 
          franBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
       return franBtn;
    };
    
-   // AUST Î≤ÑÌäº
+   // AUST πˆ∆∞
    public JButton getausBtn() {
       if (ausBtn == null) {
          ausBtn = new JButton("AUS");
@@ -295,7 +297,7 @@ public class LoginInterface extends JFrame {
 
          ausBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
@@ -314,7 +316,7 @@ public class LoginInterface extends JFrame {
    
    
    
-   // paneDarkModeÌå®ÎÑê
+   // paneDarkMode∆–≥Œ
    public JPanel getPaneDarkMode() {
       if (paneDarkMode == null) {
          paneDarkMode = new JPanel();
@@ -326,7 +328,7 @@ public class LoginInterface extends JFrame {
       return paneDarkMode;
    }
    
-   // darkmod ÎùºÎ≤®
+   // darkmod ∂Û∫ß
    public JLabel getDarkmode() {
       if (darkMode == null) {
          darkMode = new JLabel("MODE");
@@ -337,7 +339,7 @@ public class LoginInterface extends JFrame {
    };
    
 
-   // darkmod Ìå®ÎÑê
+   // darkmod ∆–≥Œ
    public JPanel getdarkBox() {
       if (darkBox == null) {
          darkBox = new JPanel();
@@ -351,7 +353,7 @@ public class LoginInterface extends JFrame {
       return darkBox;
    }
 
-   // basic Î≤ÑÌäº
+   // basic πˆ∆∞
    public JButton getbasicBtn() {
       if (basicBtn == null) {
          basicBtn = new JButton("BASIC");
@@ -360,7 +362,7 @@ public class LoginInterface extends JFrame {
 //         uDark.setPreferredSize(new Dimension(100, 50));
          basicBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
@@ -368,7 +370,7 @@ public class LoginInterface extends JFrame {
    };
    
    
-   // dark Î≤ÑÌäº
+   // dark πˆ∆∞
    public JButton getdarkBtn() {
       if (darkBtn == null) {
          darkBtn = new JButton("DARK");
@@ -378,7 +380,7 @@ public class LoginInterface extends JFrame {
 //         uDark.setPreferredSize(new Dimension(100, 50));
          darkBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
@@ -392,7 +394,7 @@ public class LoginInterface extends JFrame {
    
    
    
-   // fontSizeÌå®ÎÑê
+   // fontSize∆–≥Œ
    public JPanel getPaneFont() {
       if (paneFont == null) {
          paneFont = new JPanel();
@@ -405,7 +407,7 @@ public class LoginInterface extends JFrame {
       return paneFont;
    }
    
-   // font ÎùºÎ≤®
+   // font ∂Û∫ß
    public JLabel getFontSize() {
       if (fontSize == null) {
          fontSize = new JLabel("FONT");
@@ -415,15 +417,15 @@ public class LoginInterface extends JFrame {
       return fontSize;
    };
    
- 
-   // font Ìå®ÎÑê
+
+   // font ∆–≥Œ
    public JPanel getFontBox() {
       if (fontBox == null) {
          fontBox = new JPanel();
          fontBox.setBackground(new Color(255, 241, 169));
          fontBox.setLayout(new FlowLayout(FlowLayout.LEFT));
          fontBox.setLayout(new GridBagLayout());
-         fontBox.setLayout(new FlowLayout(FlowLayout.LEFT, 20,30));
+         fontBox.setLayout(new FlowLayout(FlowLayout.LEFT,20,30));
 
          fontBox.add(getSmallBtn());
          fontBox.add(getMediumBtn());
@@ -432,7 +434,7 @@ public class LoginInterface extends JFrame {
       return fontBox;
    }
 
-   // basic Î≤ÑÌäº
+   // basic πˆ∆∞
    public JButton getSmallBtn() {
       if (smallBtn == null) {
          smallBtn = new JButton("S");
@@ -441,7 +443,7 @@ public class LoginInterface extends JFrame {
 
          smallBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
@@ -449,7 +451,7 @@ public class LoginInterface extends JFrame {
    };
    
    
-   // smallBtn Î≤ÑÌäº
+   // smallBtn πˆ∆∞
    public JButton getMediumBtn() {
       if (mediumBtn == null) {
          mediumBtn = new JButton("M");
@@ -459,14 +461,14 @@ public class LoginInterface extends JFrame {
 //         uDark.setPreferredSize(new Dimension(100, 50));
          mediumBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
       return mediumBtn;
    };
    
-   // mediumBtn Î≤ÑÌäº
+   // mediumBtn πˆ∆∞
    public JButton getLargeBtn() {
       if (largeBtn == null) {
          largeBtn = new JButton("L");
@@ -476,7 +478,7 @@ public class LoginInterface extends JFrame {
 //         uDark.setPreferredSize(new Dimension(100, 50));
          largeBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
             }
          });
       }
@@ -489,7 +491,7 @@ public class LoginInterface extends JFrame {
    
 
    
-   // paneSubmitÌå®ÎÑê
+   // paneSubmit∆–≥Œ
    public JPanel getPaneSubmit() {
       if (paneSubmit == null) {
          paneSubmit = new JPanel();
@@ -500,7 +502,7 @@ public class LoginInterface extends JFrame {
       return paneSubmit;
    }
    
-   // submitCenterÎ•º ÎßûÏ∂îÍ∏∞ ÏúÑÌïú box
+   // submitCenter∏¶ ∏¬√ﬂ±‚ ¿ß«— box
    public JPanel getSubmitBox() {
       if (submitBox == null) {
          submitBox = new JPanel();
@@ -512,7 +514,7 @@ public class LoginInterface extends JFrame {
    }
 
 
-   // submit Î≤ÑÌäº
+   // submit πˆ∆∞
    public JButton getuSubmit() {
       if (uSubmit == null) {
          uSubmit = new JButton("SUBMIT");
@@ -520,7 +522,7 @@ public class LoginInterface extends JFrame {
 //         uDark.setPreferredSize(new Dimension(100, 50));
          uSubmit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // ÌÅ¥Î¶≠Ïãú Ïã§ÌñâÌï† ÌñâÏúÑ
+               // ≈¨∏ØΩ√ Ω««‡«“ «‡¿ß
                System.exit(0);
             }
          });
